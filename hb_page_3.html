@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мега-Мачо-Мен — Владосичок</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0f0c20 0%, #15102a 50%, #060409 100%);
+            overflow-y: auto;
+            position: relative;
+            color: #fff;
+            padding: 40px 0;
+        }
+
+        /* Стильний задній фон з ефектом ліній */
+        .bg-lines {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .card {
+            background: rgba(20, 20, 30, 0.8);
+            backdrop-filter: blur(15px);
+            padding: 40px 30px;
+            border-radius: 32px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(0, 242, 254, 0.15);
+            text-align: center;
+            max-width: 580px; /* Розширено картку для балансу з фото */
+            width: 90%;
+            border: 1px solid rgba(0, 242, 254, 0.25);
+            z-index: 10;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* ОНОВЛЕНИЙ КОНТЕЙНЕР: як на 5-й сторінці, збільшена висота */
+        .photo-container {
+            width: 100%;
+            max-height: 550px; /* Збільшено з 320px */
+            height: auto;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+            border: 3px solid #00f2fe;
+            background: #15102a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ОНОВЛЕНІ СТИЛІ КАРТИНКИ: тепер видно повністю */
+        .photo-container img {
+            width: 100%;
+            height: auto;
+            max-height: 540px;
+            object-fit: contain; /* Показує фотографію повністю без обрізань */
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .photo-container img {
+            transform: scale(1.02);
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            color: #00f2fe;
+            line-height: 1.4;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+        }
+
+        .secret-inside {
+            font-size: 1.05rem;
+            color: #a0aec0;
+            font-style: italic;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        /* Кнопка про хвостика 🐕 */
+        .dog-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            color: #0f0c20;
+            padding: 14px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1rem;
+            box-shadow: 0 5px 25px rgba(0, 242, 254, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            line-height: 1.4;
+        }
+
+        .dog-btn:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 10px 35px rgba(0, 242, 254, 0.7);
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-lines"></div>
+
+    <div class="card">
+        <!-- Твоє стильне фото з новими налаштуваннями -->
+        <div class="photo-container">
+            <img src="vlad_style.jpg" alt="Влад Стиль">
+        </div>
+        
+        <!-- Головний текст -->
+        <h2>Залишайся неймовірно стильовим, мега-мачо-меном з трьома обхватами 💪</h2>
+        <span class="secret-inside">(хто знає, той знає 😎)</span>
+        
+        <!-- Кнопка про песика, яка веде на hb_page_4.html -->
+        <a href="hb_page_4.html" class="dog-btn">
+            І як жеш можна забути за того, хто біля тебе? 🐕
+        </a>
+    </div>
+
+</body>
+</html>

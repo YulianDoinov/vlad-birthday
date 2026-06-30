@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Найкращий друг — Владосичок</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1c0a00 0%, #3d1e03 50%, #110600 100%);
+            overflow-x: hidden;
+            position: relative;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        /* Тепле мерехтіння на фоні */
+        .glow-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .card {
+            background: rgba(30, 20, 15, 0.8);
+            backdrop-filter: blur(15px);
+            padding: 35px 25px;
+            border-radius: 28px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255, 145, 0, 0.15);
+            text-align: center;
+            max-width: 520px;
+            width: 95%;
+            border: 1px solid rgba(255, 145, 0, 0.2);
+            z-index: 10;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Блок з двома фотографіями */
+        .photos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .photo-box {
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            border: 2px solid transparent;
+            background: linear-gradient(#26140a, #26140a) padding-box,
+                        linear-gradient(45deg, #ff9100, #ff5500) border-box;
+            height: 240px;
+        }
+
+        .photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .photo-box:nth-child(1):hover img {
+            transform: scale(1.06) rotate(-2deg);
+        }
+        .photo-box:nth-child(2):hover img {
+            transform: scale(1.06) rotate(2deg);
+        }
+
+        h2 {
+            font-size: 1.45rem;
+            color: #ffb703;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(255, 150, 0, 0.3);
+        }
+
+        .wish-text {
+            color: #ffd0a1;
+            font-size: 1.15rem;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        /* Велика неонова кнопка з переходом на 5-ту сторінку */
+        .next-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff5500, #ff9100);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 5px 20px rgba(255, 85, 0, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            line-height: 1.4;
+            animation: pulse 2s infinite;
+        }
+
+        .next-btn:hover {
+            background: linear-gradient(45deg, #ff9100, #ff5500);
+            transform: scale(1.03) translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 85, 0, 0.6);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 85, 0, 0.5); }
+            70% { box-shadow: 0 0 0 12px rgba(255, 85, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 85, 0, 0); }
+        }
+
+        /* Вогники на фоні */
+        .spark {
+            position: absolute;
+            background: rgba(255, 145, 0, 0.3);
+            border-radius: 50%;
+            filter: blur(1px);
+            animation: floatUp infinite linear;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(105vh) scale(0.5); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-5vh) scale(1.2); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Теплі вогники на задньому фоні -->
+    <div class="glow-bg" id="sparks-container"></div>
+
+    <div class="card">
+        <!-- Сітка з двома фотографіями -->
+        <div class="photos-grid">
+            <div class="photo-box">
+                <img src="vlad_n_danny.jpg" alt="Влад та Данні 1">
+            </div>
+            <div class="photo-box">
+                <img src="vlad_n_danny2.jpg" alt="Влад та Данні 2">
+            </div>
+        </div>
+        
+        <!-- Опис -->
+        <h2>Це твій маленький тасманський диявол, який завжди не дає тобі сумувати (і розслабитись) 😈🐕</h2>
+        <p class="wish-text">Нехай він і надалі дає тобі шанс молодити дівчат і буде твоїм найкращим другом ❤️ 🔗</p>
+        
+        <!-- КНОПКА ТОЧНО ВЕДЕ НА hb_page_5.html -->
+        <a href="hb_page_5.html" class="next-btn">
+            And the last but not least, what about your charisma as a salesman aka support agent? 💰🧳💻
+        </a>
+    </div>
+
+    <script>
+        // Ефект літаючих іскорок на фоні
+        const container = document.getElementById('sparks-container');
+        for (let i = 0; i < 30; i++) {
+            const spark = document.createElement('div');
+            spark.classList.add('spark');
+            
+            const size = Math.random() * 6 + 2;
+            spark.style.width = size + 'px';
+            spark.style.height = size + 'px';
+            spark.style.left = Math.random() * 100 + 'vw';
+            
+            spark.style.animationDuration = Math.random() * 4 + 4 + 's';
+            spark.style.animationDelay = Math.random() * 5 + 's';
+            
+            container.appendChild(spark);
+        }
+    </script>
+</body>
+</html>

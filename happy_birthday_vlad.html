@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>З Днем Narodження, Владосичок!</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 50%, #b5e2fa 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Анімація конфеті на задньому плані */
+        .confetti {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        /* Стилі для самої листівки */
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 10;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 50px rgba(244, 143, 177, 0.4);
+        }
+
+        .cake-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        h1 {
+            color: #ff477e;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .greeting {
+            color: #ff7096;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        p {
+            color: #4a4a4a;
+            line-height: 1.6;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        /* Оновлений стиль кнопки-посилання */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff477e, #ff7096);
+            color: white;
+            padding: 12px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(255, 71, 126, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: linear-gradient(45deg, #ff7096, #ff477e);
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 71, 126, 0.5);
+        }
+
+        /* Ключові кадри для анімацій */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.05); }
+        }
+
+        /* Створення ефекту падаючих частинок */
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0.7;
+            border-radius: 50%;
+            animation: fall 4s linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Конфеті на фоні -->
+    <div class="confetti" id="confetti-container"></div>
+
+    <!-- Картка-листівка -->
+    <div class="card">
+        <div class="cake-icon">🎂✨</div>
+        <h1>Владосичок!</h1>
+        <div class="greeting">Вітаємо тебе з Днем Народження!</div>
+        <p>Нехай цей рік принесе безліч яскравих емоцій, крутих подій, здійснення всіх найзавітніших мрій та щоденних приводів для посмішки! Залишайся таким жеш неймовірним, який ти є 💖</p>
+        
+        <!-- Оновлена кнопка, яка перенаправляє на другу сторінку -->
+        <a href="hb_page_2.html" class="btn" onclick="celebrate()">Сяяти!</a>
+    </div>
+
+    <script>
+        // Простий скрипт для створення літаючих конфеті
+        const container = document.getElementById('confetti-container');
+        const colors = ['#ff477e', '#ff7096', '#ff85a1', '#fbb1bd', '#b5e2fa', '#90e0ef'];
+
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // Випадкові налаштування для кожної частинки
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.transform = `scale(${Math.random() * 1.2})`;
+            particle.style.animationDuration = Math.random() * 3 + 2 + 's'; 
+            
+            // Випадкова форма (коло або квадрат)
+            if(Math.random() > 0.5) {
+                particle.style.borderRadius = '0%';
+            }
+
+            container.appendChild(particle);
+
+            // Видаляємо елемент після завершення анімації
+            setTimeout(() => {
+                particle.remove();
+            }, 5000);
+        }
+
+        // Генеруємо конфеті постійно
+        setInterval(createParticle, 150);
+
+        // Функція для додаткового вибуху конфеті при натисканні
+        function celebrate() {
+            for(let i = 0; i < 30; i++) {
+                setTimeout(createParticle, i * 20);
+            }
+        }
+    </script>
+</body>
+</html>

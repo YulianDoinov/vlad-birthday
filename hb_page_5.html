@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>З Днем Народження, Наш... Сяйво-Агент!</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0b132b 0%, #1c2541 50%, #3a506b 100%);
+            overflow-y: auto;
+            position: relative;
+            color: #fff;
+            padding: 40px 0;
+        }
+
+        /* Золотий та грошовий дощ на фоні */
+        .matrix-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .card {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
+            padding: 40px 30px;
+            border-radius: 32px;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), 0 0 40px rgba(0, 180, 216, 0.2);
+            text-align: center;
+            max-width: 580px; /* Трохи розширив картку для кращого масштабу фото */
+            width: 90%;
+            border: 2px solid rgba(0, 180, 216, 0.3);
+            z-index: 10;
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ОНОВЛЕНИЙ КОНТЕЙНЕР: збільшена висота, щоб бачити все фото */
+        .photo-container {
+            width: 100%;
+            max-height: 550px; /* Збільшено з 360px */
+            height: auto;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+            border: 3px solid transparent;
+            background: linear-gradient(#0f172a, #0f172a) padding-box,
+                        linear-gradient(45deg, #00b4d8, #90e0ef, #ffd166) border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ОНОВЛЕНІ СТИЛІ КАРТИНКИ: тепер вона вписується повністю */
+        .photo-container img {
+            width: 100%;
+            height: auto;
+            max-height: 540px;
+            object-fit: contain; /* Показує фотографію цілком, без обрізань */
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .photo-container img {
+            transform: scale(1.02);
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            color: #90e0ef;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .family-text {
+            font-size: 1.25rem;
+            color: #ffd166;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(255, 209, 102, 0.3);
+            padding: 15px;
+            background: rgba(255, 209, 102, 0.07);
+            border-radius: 16px;
+            border: 1px dashed rgba(255, 209, 102, 0.3);
+        }
+
+        .exam-gift-text {
+            font-size: 1.15rem;
+            color: #ff9e00;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        .heart-badge {
+            font-size: 45px;
+            margin-top: 25px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        .money-particle {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0.6;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-5vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Фоновий дощ із грошей та зірочок -->
+    <div class="matrix-bg" id="matrix-container"></div>
+
+    <div class="card">
+        <!-- Фінальне фото з новими налаштуваннями розміру -->
+        <div class="photo-container">
+            <img src="agent.jpg" alt="Super Agent">
+        </div>
+        
+        <!-- Робочий гумор -->
+        <h2>There is nothing about your skills as a super-duper-mega-wow-excellent-fabulous-magnificent worker and we hope that you have found a place by now where you can not die for numbers lol 😂</h2>
+        
+        <!-- Привітання від родини -->
+        <p class="family-text">
+            Best wishes to you our peach on the tree 🌳🍑 Love you, hug you and adore you ❤️ We are glad that you are a part of our Doinov's family ✨
+        </p>
+        
+        <!-- Екзамени та подарунок -->
+        <p class="exam-gift-text">
+            Good luck with your exam mate 📚 Your gift will be delivered as soon as possible 🎁
+        </p>
+
+        <div class="heart-badge">❤️✨🎉</div>
+    </div>
+
+    <script>
+        const container = document.getElementById('matrix-container');
+        const emojis = ['💰', '💵', '✨', '💻', '📈', '🚀'];
+
+        function createMoney() {
+            const particle = document.createElement('div');
+            particle.classList.add('money-particle');
+            particle.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.animationDuration = Math.random() * 3 + 3 + 's';
+            particle.style.fontSize = Math.random() * 15 + 15 + 'px';
+
+            container.appendChild(particle);
+
+            setTimeout(() => {
+                particle.remove();
+            }, 6000);
+        }
+
+        setInterval(createMoney, 250);
+    </script>
+</body>
+</html>
